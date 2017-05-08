@@ -9,5 +9,8 @@ import com.example.administrator.mvppractice.Bean.MainModelBean;
  */
 
 public interface MainView {
+    //展示数据
     void showData(MainModelBean mainModelBean);
+    String getData();
+    void setShowData(String getShowData);
 }
