@@ -39,10 +39,12 @@ public class  MainPresenter implements IMainPresenter{
             Log.d("zzz2", "无值");
         }
     }
+    //得到取出值来的方法
     public void gettakeData(){
         List<String> list = mMainModel.takeData();
         mainView.setShowData(list.toString());
     }
+    //请求成功是的方法
     @Override
     public void loadDataSuccess(MainModelBean mainModelBean) {
         mainView.showData(mainModelBean);

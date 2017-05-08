@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         setContentView(R.layout.activity_main);
         init();
     }
-
+    //初始化的方法
     private void init() {
         text = (TextView) findViewById(R.id.text);
         sava = (Button) findViewById(R.id.sava);
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         title = (TextView) findViewById(R.id.title);
         sava.setOnClickListener(this);
         take.setOnClickListener(this);
+        //得到p层类对象
         mMainPresenter = new MainPresenter(this);
         //得到Presenter层的值的方法
         mMainPresenter.loadData();
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         super.onDestroy();
     }
 
+    //数据展示的方法
     @Override
     public void showData(MainModelBean mainModelBean) {
         String showData = getResources().getString(R.string.city) + mainModelBean.getCity()
@@ -51,13 +53,13 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
                 + getResources().getString(R.string.time) + mainModelBean.getTime();
         text.setText(showData);
     }
-
+    //得到要存入值的方法
     @Override
     public String getData() {
         String vaule= text.getText().toString();
         return vaule;
     }
-
+    //显示值的方法
     @Override
     public void setShowData(String getShowData) {
         title.setText(getShowData);
@@ -67,11 +69,14 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.sava:
+                //得到存入的值
                 String data = getData();
                 Log.d("zzz3", data);
+                //通过p层对象调用保存的方法
                 mMainPresenter.savaData(data);
                 break;
             case R.id.take:
+                //通过p层对象调用取值的方法
                 mMainPresenter.gettakeData();
                 break;
         }

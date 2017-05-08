@@ -30,7 +30,7 @@ public class MainModel implements Model {
     public MainModel(IMainPresenter iMainPresenter) {
         this.iMainPresenter = iMainPresenter;
     }
-
+    //得到值的地方
     @Override
     public void loadData() {
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
@@ -57,13 +57,14 @@ public class MainModel implements Model {
             }
         });
     }
-
+    //存入集合的方法
     @Override
     public void cun(String getShowData) {
         dataList.add(getShowData);
         Log.d("zzz", dataList.toString());
     }
 
+    //取出值的方法
     @Override
     public List<String> takeData() {
         return dataList;
